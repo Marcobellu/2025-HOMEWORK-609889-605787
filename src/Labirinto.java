@@ -1,6 +1,6 @@
 
 public class Labirinto {
-	//private Stanza stanzaIngresso;
+	private Stanza stanzaIngresso;
 	private Stanza stanzaCorrente;
 	private Stanza stanzaVincente;
 
@@ -43,7 +43,8 @@ public class Labirinto {
 		atrio.addAttrezzo(osso);
 
 		// il gioco comincia nell'atrio
-		stanzaCorrente = atrio;  
+		stanzaCorrente= atrio;
+		stanzaIngresso = atrio;  
 		stanzaVincente = biblioteca;
 	}
 
