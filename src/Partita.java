@@ -1,7 +1,4 @@
 
-
-
-
 /**
  * Questa classe modella una partita del gioco
  *
@@ -12,36 +9,45 @@
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 20;
+	public Giocatore giocatore;
 	public Labirinto labirinto;
+	
 	private boolean finita;
-	private int cfu;
+	private Stanza stanzaCorrente;
+	
 	
 	public Partita(){
 		this.labirinto = new Labirinto();
+		this.giocatore = new Giocatore();
 		this.finita = false;
-		this.cfu = CFU_INIZIALI;
+		this.stanzaCorrente = this.labirinto.getStanzaIngresso(); 
 	}
-
-    
-  
-	
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.labirinto.getStanzaCorrente()== this.labirinto.getStanzaVincente();
+		return this.getStanzaCorrente()== this.labirinto.getStanzaVincente();
 	}
-
+	public Giocatore getGiocatore() {
+		return this.giocatore;
+	}
+	public Labirinto getLabirinto() {
+		return this.labirinto;
+	}
 	/**
 	 * Restituisce vero se e solo se la partita e' finita
 	 * @return vero se partita finita
 	 */
 	public boolean isFinita() {
-		return finita || vinta() || (cfu == 0);
+		return finita || vinta() || (giocatore.getCfu() == 0);
 	}
-
+	public void setStanzaCorrente(Stanza stanzaCorrente) {
+		this.stanzaCorrente = stanzaCorrente;
+	}
+	public Stanza getStanzaCorrente() {
+		return this.stanzaCorrente;
+	}
 	/**
 	 * Imposta la partita come finita
 	 *
@@ -50,11 +56,5 @@ public class Partita {
 		this.finita = true;
 	}
 
-	public int getCfu() {
-		return this.cfu;
-	}
-
-	public void setCfu(int cfu) {
-		this.cfu = cfu;		
-	}	
+	
 }

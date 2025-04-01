@@ -26,9 +26,10 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 	
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
+	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
 
 	private Partita partita;
+	//private Attrezzo attrezzo;
 
 	public DiaDia() {
 		this.partita = new Partita();
@@ -61,6 +62,10 @@ public class DiaDia {
 			this.vai(comandoDaEseguire.getParametro());
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
+		else if (comandoDaEseguire.getNome().equals("posa"))
+			this.posa(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("prendi"))
+			this.prendi(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -71,7 +76,67 @@ public class DiaDia {
 	}   
 
 	// implementazioni dei comandi dell'utente:
+/*	private void Prendi(String nomeAttrezzo) {
+        Stanza stanzaCorrente = this.partita.labirinto.getStanzaCorrente();
+        Borsa borsa = this.partita.giocatore.getBorsa();
+        
+        Attrezzo attrezzo = stanzaCorrente.getAttrezzo(nomeAttrezzo);
+        if (attrezzo != null) {
+            if (borsa.hasAttrezzo(attrezzo.getNome())) {
+                stanzaCorrente.removeAttrezzo(nomeAttrezzo);
+                System.out.println("Hai preso: " + nomeAttrezzo);
+            } else {
+                System.out.println("La borsa è piena! Non puoi prendere questo attrezzo.");
+            }
+        } else {
+            System.out.println("Attrezzo non presente nella stanza.");
+        }
+    }*/
+private void posa(String oggetto) {
+	if(oggetto==null) {
+		System.out.println("cosa vuoi lasciare");
+		return;
+	}
+	Attrezzo attrezzo = partita.getGiocatore().getBorsa().getAttrezzo(oggetto);
+	if(attrezzo==null) {
+		System.out.println("l'attrezzo cercato non e' presente nella borsa");
+		return;
+	}
+	if(partita.getStanzaCorrente().addAttrezzo(attrezzo)) {
+		System.out.println("l'attrezzo è stato aggiunto nella stanza");
+		partita.getGiocatore().getBorsa().removeAttrezzo(oggetto);
+	}
+	else
+		System.out.println("la stanza è piena, l'attrezzo non può essere aggiunto");
+	System.out.println(partita.getStanzaCorrente().toString());
+}
 
+private void prendi(String oggetto) {
+	if(oggetto==null) {
+		System.out.println("cosa vuoi prendere dalla stanza?");
+		return;
+	}
+	if (partita.getStanzaCorrente() == null) {
+        System.out.println("Errore: la stanza corrente è null!");
+        return;
+    }
+	Attrezzo attrezzo = partita.getStanzaCorrente().getAttrezzo(oggetto);
+	if(attrezzo==null) {
+		System.out.println("l'attrezzo cercato non è nella stanza");
+		return;
+	}
+	if(partita.getGiocatore().getBorsa().addAttrezzo(attrezzo)) {
+		partita.getStanzaCorrente().removeAttrezzo(oggetto);
+		System.out.println("attrezzo aggiunto alla borsa");
+	}
+	else {
+		if(!partita.getGiocatore().getBorsa().isEmpty()) 
+			System.out.println("la borsa è piena, non puoi aggiugere altro");
+		else
+			System.out.println("la borsa è troppo pesante, non puoi aggiungere altri attrezzi");
+	}
+	System.out.println(partita.getGiocatore().getBorsa().toString());
+}
 	/**
 	 * Stampa informazioni di aiuto.
 	 */
@@ -86,18 +151,28 @@ public class DiaDia {
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
 	private void vai(String direzione) {
-		if(direzione==null)
+		if(direzione==null) {
 			System.out.println("Dove vuoi andare ?");
+			return;
+		}
 		Stanza prossimaStanza = null;
-		prossimaStanza = this.partita.labirinto.getStanzaCorrente().getStanzaAdiacente(direzione);
+		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
-			this.partita.labirinto.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			
+			//int cfu = this.partita.giocatore.getCfu();
+			//if(cfu>0) {
+			partita.giocatore.setCfu(partita.giocatore.getCfu()-1);
+			this.partita.setStanzaCorrente(prossimaStanza);
+			//System.out.println(partita.getStanzaCorrente().getDescrizione());
+			//this.partita.giocatore.toString();
+			//} else {
+				//System.out.println("non hai abbastanza cfu!!!");
+			//}
 		}
-		System.out.println(partita.labirinto.getStanzaCorrente().getDescrizione());
+		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		
 	}
 
 	/**

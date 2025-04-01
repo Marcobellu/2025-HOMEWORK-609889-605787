@@ -60,6 +60,7 @@ public class Borsa {
 			}
 		}
 		return a;
+		
 	}
 	public String toString() {
 		StringBuilder s = new StringBuilder();
