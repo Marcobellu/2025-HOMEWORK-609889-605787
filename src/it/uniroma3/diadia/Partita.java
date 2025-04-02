@@ -1,3 +1,7 @@
+package it.uniroma3.diadia;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.giocatore.Giocatore;
 
 /**
  * Questa classe modella una partita del gioco
@@ -11,14 +15,15 @@ public class Partita {
 
 	public Giocatore giocatore;
 	public Labirinto labirinto;
-	
+
 	private boolean finita;
 	private Stanza stanzaCorrente;
-	
-	
+
+
 	public Partita(){
 		this.labirinto = new Labirinto();
 		this.giocatore = new Giocatore();
+		this.giocatore.partita= this;
 		this.finita = false;
 		this.stanzaCorrente = this.labirinto.getStanzaIngresso(); 
 	}
@@ -56,5 +61,5 @@ public class Partita {
 		this.finita = true;
 	}
 
-	
+
 }
