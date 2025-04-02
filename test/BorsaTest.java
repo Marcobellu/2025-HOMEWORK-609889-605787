@@ -14,14 +14,20 @@ class BorsaTest {
 	void setUp() throws Exception {
 		this.borsa=new Borsa(6);
 		this.chiave=new Attrezzo("chiave",6);
+<<<<<<< HEAD
 
 
+=======
+		
+	
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 	}
 
 	@Test
 	void testBorsaNonVuota() {
 		this.borsa.addAttrezzo(chiave);
 		assertFalse(this.borsa.isEmpty());
+<<<<<<< HEAD
 	}
 
 	@Test
@@ -45,4 +51,29 @@ class BorsaTest {
 		assertFalse(this.borsa.hasAttrezzo("chiave"));
 	}
 
+=======
+	}
+	
+	@Test
+	void testBorsaVuota() {
+	
+		assertTrue(this.borsa.isEmpty());
+	}
+	
+	@Test
+	void testAddAttrezzo() {
+		assertFalse(this.borsa.hasAttrezzo("chiave"));
+		this.borsa.addAttrezzo(this.chiave);
+		assertTrue(this.borsa.hasAttrezzo("chiave"));
+	}
+	
+	@Test
+	void testRemoveAttrezzo() {
+		this.borsa.addAttrezzo(chiave);
+		assertTrue(this.borsa.hasAttrezzo("chiave"));
+		this.borsa.removeAttrezzo("chiave");
+		assertFalse(this.borsa.hasAttrezzo("chiave"));
+	}
+
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 }

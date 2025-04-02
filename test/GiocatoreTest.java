@@ -16,16 +16,26 @@ class GiocatoreTest {
 		this.giocatore=new Giocatore();
 		this.borsa=new Borsa();
 		this.cfu=5;
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 	}
 
 	@Test
 	void testGetBorsa() {
 		this.giocatore.setBorsa(borsa);
 		assertNotNull(this.giocatore.getBorsa());
+<<<<<<< HEAD
 
 	}
 
+=======
+		
+	}
+	
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 	@Test
 	void testSetCfu() {
 		this.giocatore.setCfu(5);

@@ -7,8 +7,13 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 class StanzaTest {
+<<<<<<< HEAD
 	private Stanza stanza;
 	private Attrezzo spada;
+=======
+private Stanza stanza;
+private Attrezzo spada;
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -20,7 +25,11 @@ class StanzaTest {
 	void testStanzaVuota() {
 		assertFalse(this.stanza.hasAttrezzo("spada"));
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 	@Test
 	void testAddAttrezzo() {
 		assertFalse(this.stanza.hasAttrezzo("spada"));
@@ -33,7 +42,13 @@ class StanzaTest {
 		assertTrue(this.stanza.hasAttrezzo("spada"));
 		this.stanza.removeAttrezzo("spada");
 		assertFalse(this.stanza.hasAttrezzo("spada"));
+<<<<<<< HEAD
 
 	}
 
+=======
+		
+	}
+	
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 }

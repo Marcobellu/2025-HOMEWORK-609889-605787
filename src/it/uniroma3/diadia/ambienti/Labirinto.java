@@ -10,8 +10,13 @@ public class Labirinto {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Crea tutte le stanze e le porte di collegamento
 	 */
+=======
+     * Crea tutte le stanze e le porte di collegamento
+     */
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 	public void creaStanze() {
 
 		/* crea gli attrezzi */

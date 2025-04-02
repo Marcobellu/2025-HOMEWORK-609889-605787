@@ -13,11 +13,19 @@ public class Giocatore {
 	public Borsa borsa;
 	public Partita partita;
 	static final private int CFU_INIZIALI = 6;
+<<<<<<< HEAD
 
 	public Giocatore() {
 		this.cfu = CFU_INIZIALI;
 		this.borsa= new Borsa();
 
+=======
+	
+	public Giocatore() {
+		this.cfu = CFU_INIZIALI;
+		this.borsa= new Borsa();
+		
+>>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
 	}
 	public void setBorsa(Borsa borsa) {
 		this.borsa = borsa;
