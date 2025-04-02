@@ -1,6 +1,5 @@
-
-
-
+package it.uniroma3.diadia.ambienti;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
  * Classe Stanza - una stanza in un gioco di ruolo.
@@ -142,7 +141,7 @@ public class Stanza {
 		boolean trovato;
 		trovato = false;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if (attrezzo!=null && attrezzo.getNome().equals(nomeAttrezzo))
 				trovato = true;
 		}
 		return trovato;
@@ -190,7 +189,6 @@ public class Stanza {
 				return true;
 			}
 		}
-		// TODO da implementare
 		return false;
 	}
 

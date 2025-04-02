@@ -1,3 +1,6 @@
+package it.uniroma3.diadia.giocatore;
+import it.uniroma3.diadia.Partita;
+
 /**
  * Questa classe modella i cfu del giocatore
  *
@@ -9,13 +12,16 @@ public class Giocatore {
 	private int cfu;
 	public Borsa borsa;
 	public Partita partita;
-	static final private int CFU_INIZIALI = 20;
+	static final private int CFU_INIZIALI = 6;
 	
 	public Giocatore() {
 		this.cfu = CFU_INIZIALI;
 		this.borsa= new Borsa();
+		
 	}
-	
+	public void setBorsa(Borsa borsa) {
+		this.borsa = borsa;
+	}
 	public Borsa getBorsa() {
 		return this.borsa;
 	}
