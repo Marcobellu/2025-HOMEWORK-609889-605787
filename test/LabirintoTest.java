@@ -24,27 +24,13 @@ class LabirintoTest {
 		assertEquals(this.ingresso.getNome(), this.labirinto.getStanzaIngresso().getNome());
 		assertNotNull(this.labirinto.getStanzaVincente());
 		assertEquals(this.vincente.getNome(), this.labirinto.getStanzaVincente().getNome());
-<<<<<<< HEAD
 
 	}
-	@Test
 	void testGetStanzaIngresso() {
-		assertEquals(this.ingresso.getNome(),this.labirinto.getStanzaIngresso().getNome());
+		assertEquals(this.ingresso,this.labirinto.getStanzaIngresso());
 
 	}
-
-=======
-		
-	}
-	@Test
-	void testGetStanzaIngresso() {
-		assertEquals(this.ingresso.getNome(),this.labirinto.getStanzaIngresso().getNome());
-		
-	}
-	
->>>>>>> 8aa140e92919475658dc28001d98ae5fb5ed849b
-	@Test
 	void testGetStanzaVincente() {
-		assertEquals(this.vincente.getNome(),this.labirinto.getStanzaVincente().getNome());
+		assertEquals(this.vincente,this.labirinto.getStanzaVincente());
 	}
 }
